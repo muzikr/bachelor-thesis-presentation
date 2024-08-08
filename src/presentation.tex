@@ -1,0 +1,152 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Focus Beamer Presentation
+% LaTeX Template
+% Version 1.0 (8/8/18)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Pasquale Africa (https://github.com/elauksap/focus-beamertheme) with modifications by
+% Vel (vel@LaTeXTemplates.com)
+%
+% Template license:
+% GNU GPL v3.0 License
+%
+% Important note:
+% The bibliography/references need to be compiled with bibtex.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{mathtools}
+\usepackage{comment}
+
+\usetheme{focus} % Use the Focus theme supplied with the template
+% Add option [numbering=none] to disable the footer progress bar
+% Add option [numbering=fullbar] to show the footer progress bar as always full with a slide count
+
+% Uncomment to enable the ice-blue theme
+%\definecolor{main}{RGB}{92, 138, 168}
+%\definecolor{background}{RGB}{240, 247, 255}
+
+\definecolor{mygreen}{RGB}{0, 128, 0}
+\definecolor{myblue}{RGB}{51, 51, 204}
+\definecolor{myviolet}{RGB}{255, 0, 255}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\green}[1]{\textcolor{mygreen}{#1}}
+\newcommand{\blue}[1]{\textcolor{myblue}{#1}}
+\newcommand{\violet}[1]{\textcolor{myviolet}{#1}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Rn}[1][n]{\mathbb{R}^{#1}}
+\newcommand{\bx}{\textbf{x}}
+\newcommand{\by}{\textbf{y}}
+\newcommand{\bz}{\textbf{z}}
+\newcommand{\bu}{\textbf{u}}
+\newcommand{\bv}{\textbf{v}}
+\newcommand{\I}{\mathcal{I}}
+
+
+%------------------------------------------------
+
+\usepackage{booktabs} % Required for better table rules
+%\usepackage{slashbox}
+%\usepackage{ulem,centernot}
+
+
+%----------------------------------------------------------------------------------------
+%	 TITLE SLIDE
+%----------------------------------------------------------------------------------------
+
+\title{Integer cooperative game theory}
+
+\author{Richard Mužík}
+
+\titlegraphic{\hspace*{5cm}\includegraphics[scale=0.5]{../img/logo-en.pdf}} % Optional title page image, comment this line to remove it
+
+\institute{richard@imuzik.cz}
+
+
+%------------------------------------------------
+
+\begin{document}
+
+%------------------------------------------------
+
+\begin{frame}
+	\maketitle % Automatically created using the information in the commands above
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	 SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Motivations and introduction} % Section title slide, unnumbered
+
+%------------------------------------------------
+
+\begin{frame}{Game theory - quick reminder}
+    \begin{block}{Cooperative game}
+        A \textbf{cooperative game} is an ordered pair $(N,v)$, where $N=\{1,\dots,n\}$ is a finite set of players and $v\colon 2^N \to \mathbb{R}$ is the characteristic function. Further, $v(\emptyset) = 0$.
+    \end{block}
+    \begin{itemize}
+        \item $S \subseteq N$ ... coalition
+        \item $v(S)$ ... values of coalition
+    \end{itemize}
+    Goal: \textit{To distribute the value of the game among players}
+    \begin{itemize}
+	    \item \textbf{Payoff vector} $\bx \in \Rn$
+	    \begin{itemize}
+	        \item $x_i$ represents payoff of player $i$
+	    \end{itemize}
+	    \item Vector $\bx \in \Rn$ is \textbf{efficient}, if $\sum_{i \in N}x_i = v(N)$
+	    \begin{itemize}
+	        \item Usually, we distribute $v(N)$
+	    \end{itemize}
+	    \item Vector $\bx \in \Rn$ is \textbf{individually rational}, if $x_i \geq v(i)$
+	    \begin{itemize}
+	        \item players prefer $x_i$ over $v(i)$
+	    \end{itemize}
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	 SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Definitions} % Section title slide, unnumbered
+
+%------------------------------------------------
+
+\begin{frame}{Discrete cooperative game theory}
+    \begin{block}{Integer cooperative game}
+        An \textbf{integer cooperative game} is an ordered pair $(N,v)$, where $N=\{1,\dots,n\}$ is a finite set of players and $v\colon 2^N \to \mathbb{Z}$ is the characteristic function,where $v(\emptyset) = 0$.
+    \end{block}
+    \begin{itemize}
+        \item The integer cooperative game is denoted by $G_I$ and set of all of them is denoted by $\mathcal{G}_I^N$
+    \end{itemize}
+    %\pause
+    \begin{block}{Discrete cooperative game}
+        A \textbf{discrete cooperative game} is an integer cooperative game $(N,v)$, where additionally we want the outcomes, i.e. payoff vectors, to be integers.
+    \end{block}
+    \begin{itemize}
+        \item The integer cooperative game is denoted by $G_D$ and set of all of them is denoted by $\mathcal{G}_D^N$
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\section{Thank you for your attention}
+
+\end{document}
