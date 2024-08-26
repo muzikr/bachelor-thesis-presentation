@@ -54,6 +54,10 @@
 \newcommand{\bv}{\textbf{v}}
 \newcommand{\I}{\mathcal{I}}
 
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\floorphi}{\ensuremath{\floor{\phi}\hspace{-0.5ex}}}
+
+\DeclareMathOperator{\E}{\mathbb{E}\,}
 
 %------------------------------------------------
 
@@ -143,6 +147,180 @@
     \begin{itemize}
         \item The integer cooperative game is denoted by $G_D$ and set of all of them is denoted by $\mathcal{G}_D^N$
     \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	 SECTION 3
+%----------------------------------------------------------------------------------------
+
+\section{Our results}
+
+%------------------------------------------------
+
+\begin{frame}{Integer classes}
+    \begin{itemize}
+        \item Let $c \in \mathbb{N}_0$.
+    \end{itemize}
+    
+    \begin{block}{$C$-tight games}
+        A cooperative game $(N,v)$ is \textbf{c-tight} if it holds that
+        \begin{displaymath}
+            \forall S \subseteq N: 0 \leq v(S) \leq c \land v(N) = c.
+        \end{displaymath}
+    \end{block}
+
+    \begin{itemize}
+        \item For given $c$ there is $(c+1)^{2^n - 2}$ $c$-tight games.
+    \end{itemize}
+   
+    \begin{block}{$C$-bounded games}
+        A cooperative game $(N,v)$ is \textbf{c-bounded} if it holds that
+        \begin{displaymath}
+            \forall S \subseteq N: 0 \leq v(S) \leq c.
+        \end{displaymath}
+    \end{block}
+
+    \begin{itemize}
+        \item For given $c$ there is $(c+1)^{2^n - 1}$ $c$-bounded games.
+    \end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Counting games}
+    \begin{block}{Theorems $12$ and $14$}
+        Let $c, n, k \in \mathbb{N}$ and $k \leq n$.
+        The number of games with the following properties is given by
+
+        \begin{itemize}
+            \item $c$-tight integer $k$-games $\rightarrow$ $\binom{\binom{n}{k}-1+c}{c},$
+            \item $c$-bounded integer $k$-games $\rightarrow$ $\sum_{i=0}^{c}\binom{\binom{n}{k}-1+i}{i}.$
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Theorems $13$ and $15$}
+        Let $c, n \in \mathbb{N}$.
+        The number of games with the following properties is given by
+
+        \begin{itemize}
+            \item $c$-tight integer positive games $\rightarrow$ $\binom{2^{n}-2+c}{c},$
+            \item $c$-bounded integer $k$-games $\rightarrow$ $\sum_{i=0}^{c}\binom{2^{n}-2+i}{i}.$
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Experiments}
+    GRAPH
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Floor Shapley value}
+    \begin{block}{Floor Shapley value}
+        For an integer cooperative game $G_I \in \mathcal{G}_I^n$, the \textbf{Floor Shapley value} $\floorphi(G_I)$ is given by $\floorphi(G_I) = \floor{\phi(G_I)}$.
+    \end{block}
+
+    \begin{block}{Theorem $16$}
+        The Floor Shapley value $\floorphi(v_I)$ satisfies the following properties for all integer games $(N,v_I),(N,w_I) \in \mathcal{G}_I^n$:
+        \begin{enumerate}
+            \item Axiom of near efficiency: $v_I(N) - n \leq \sum_{i \in N} \floorphi_i(v_I) \leq v_I(N)$,
+            \item Axiom of symmetry: $\forall i,j \in N (\forall S \subseteq N \setminus \{i,j\}: v_I(S \cup i) = v_I(S \cup j)) \Rightarrow \floorphi_{i}(v_I) = \floorphi_{j}(v_I)$,
+            \item Axiom of null player: $\forall i \in N(\forall S \subseteq N: v_I(S)=v_I(S \cup i)) \implies \floorphi_{i}(v_I) = 0$,
+            \item Axiom of near additivity: $\floorphi(v_I+w_I) = \floor{\phi(v_I) + \phi(w_I)}$.
+        \end{enumerate}
+    \end{block}
+
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Efficient Floor Shapley value}
+    \begin{itemize}
+        \item The thought of preserving the efficiency...
+        \item Redistribution of the remaining value...
+    \end{itemize}
+
+    \begin{block}{Efficient Floor Shapley value}
+        For an integer cooperative game $G_I=(N,v_I) \in \mathcal{G}_I^n$, the \textbf{Efficient Floor Shapley value} $\phi^E(G_I)$ is defined as follows:
+        \begin{enumerate}
+            \item Compute the Floor Shapley value $\floorphi(G_I)$ and the Shapley value $\phi(G_I)$.
+            \item Compute the weights $w_i = \phi_i(G_I) - \floorphi_i(G_I)$ for all $i \in N$.
+            \item Sort the weights in descending order such that if multiple players have the same weight, then their ordering is uniformly random.
+            \item Each player receives his Floor Shapley value. Additionally, the top $k$ players, where $k = v_I(N) - \sum_{i \in N} \floorphi_i(v_I) = w(N)$, receive one extra unit.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Efficient Floor Shapley value - properties}
+
+    \begin{block}{Theorem $17$}
+        The Efficient Floor Shapley value $\phi^E$ satisfies the following properties for all integer games $(N,v_I) \in \mathcal{G}_I^n$:
+        \begin{enumerate}
+            \item Axiom of efficiency: $\sum_{i \in N}\phi_{i}^E(v_I) = v_I(N)$,
+            \item Axiom of expected symmetry: $\forall i,j \in N (\forall S \subseteq N \setminus \{i,j\}: v_I(S \cup i) = v_I(S \cup j)) \Rightarrow \E[\phi^E_{i}(v_I)] = \E[\phi^E_{j}(v_I)]$,
+            \item Axiom of null player: $\forall i \in N(\forall S \subseteq N: v_I(S)=v_I(S \cup i)) \implies \phi_{i}^E(v_I) = 0$.
+        \end{enumerate}
+    \end{block}
+
+    \begin{itemize}
+        \item No axiom of additivity % TODO: v nekterych det a v sub random - example 
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Probabilistic Efficient Floor Shapley value}
+    \begin{itemize}
+        \item Same thought, different approach...
+    \end{itemize}
+
+    \begin{block}{Probabilistic Efficient Floor Shapley value}
+        For an integer cooperative game $G_I \in \mathcal{G}_I^n$, the \textbf{Probabilistic Efficient Floor Shapley value} $\phi^{\E}(v)$ is defined as follows:
+        \begin{enumerate}
+            \item Compute the Floor Shapley value $\floorphi(G_I)$ and the Shapley value $\phi(G_I)$.
+            \item Compute the remainders $\tilde{p}_i = \phi_i(G_I) - \floorphi_i(G_I)$ for all $i \in N$.
+            \item Compute the probabilities $p_i = \frac{\tilde{p}_i}{\sum_{j \in N} \tilde{p}_j}$ for all $i \in N$.
+            \item Each player receives his Floor Shapley value and additionally, each unit of the remainder with probability $p_i$, i.e., each unit of $\tilde{p}(N)=\sum_{j \in N} \tilde{p}_j$ is given to player $i$ with probability $p_i$.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Probabilistic Efficient Floor Shapley value - properties}
+
+    \begin{block}{Theorem $18$}
+        The Probabilistic Efficient Floor Shapley value $\phi^{\E}$  satisfies the following properties for all integer games $(N,v_I),(N,w_I) \in \mathcal{G}_I^n$:
+        \begin{enumerate}
+            \item The expected value is the same as the Shapley value: $\E[\phi^{\E}(v_I)] = \phi(v_I)$,
+            \item Axiom of efficiency: $\sum_{i \in N}\phi_{i}^{\E}(v_I) = v_I(N)$,
+            \item Axiom of expected symmetry: $\forall i,j \in N (\forall S \subseteq N \setminus \{i,j\}: v_I(S \cup i) = v_I(S \cup j)) \Rightarrow \E[\phi_{i}^{\E}(v_I)] = \E[\phi_{j}^{\E}(v_I)]$,
+            \item Axiom of null player: $\forall i \in N(\forall S \subseteq N: v_I(S)=v_I(S \cup i)) \implies \phi_{i}^{\E}(v_I) = 0$,
+            \item Axiom of expected additivity: $\E[\phi^{\E}(v_I+w_I)] = \E[\phi^{\E}(v_I)] + \E[\phi^{\E}(w_I)]$.
+        \end{enumerate}
+    \end{block}
+
 \end{frame}
 
 %------------------------------------------------
