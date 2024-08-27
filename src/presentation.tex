@@ -325,6 +325,149 @@
 
 %------------------------------------------------
 
+%------------------------------------------------
+
+\begin{frame}{Closest lattice Shapley}
+    \begin{itemize}
+        \item Different approach using integer programming
+        \item Uses relation of the Shapley value and the Weber set
+    \end{itemize}
+
+    \begin{block}{Closest Lattice Shapley value}
+        Let $||\bullet||$ be a vector norm. The \textbf{Closest Lattice Shapley (CLS)} value of integer cooperative game $G_I \in \mathcal{G}_I^n$ is given by
+
+        \begin{displaymath}
+            \phi^\mathcal{W}(G_I)  = \min_{x \in \mathcal{W}_\Z(G_I)} ||\phi(G_I) - x||.
+        \end{displaymath}
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Closest lattice Shapley - properties}
+    \begin{itemize}
+        \item Does it even exist?
+    \end{itemize}
+
+    \begin{block}{Claim $19$}
+        The CLS value exists for all integer games $G_I \in \mathcal{G}_I^n$.
+    \end{block}
+
+    \begin{itemize}
+        \item How about the properties?
+    \end{itemize}
+
+    \begin{block}{Theorem $20$}
+        The CLS value $\phi^\mathcal{W}(v_I)$ satisfies the following properties for all integer games $(N,v_I) \in \mathcal{G}_I^n$:
+        
+        \begin{enumerate}
+            \item Axiom of efficiency: $\sum_{i \in N}(\phi^W)_{i}(v_I) = v_I(N)$,
+            \item Axiom of null player: $\forall i \in N(\forall S \subseteq N: v_I(S)=v_I(S \cup i)) \implies (\phi^W)_{i}(v_I) = 0$.
+        \end{enumerate}
+    \end{block}
+
+    \begin{itemize}
+        \item No symmetry and additivity
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Closest lattice Shapley - properties}
+    \begin{itemize}
+        \item What other properties...
+    \end{itemize}
+
+    \begin{block}{Claims $21$ - $24$}
+        For integer game $G_I \in \mathcal{G}_I^n$, the CLS value $\phi^\mathcal{W}(G_I)$:
+        \begin{itemize}
+            \item is not unique in general,
+            \item is not always an extreme point of the Weber set $\mathcal{W}(G_I)$,
+            \item depends on the choice of the norm,
+            \item is different from the Efficient Floor Shapley value.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Integer nucleolus}
+    \begin{block}{Integer nucleolus}
+        For an integer cooperative game $G_I \in \mathcal{G}_I^n$, the \textbf{integer nucleolus} $\eta_\Z(G_I)$ is defined as
+        \begin{displaymath}
+            \eta_{\Z}(G_I) = \left\{ x \in \mathcal{I}_\Z(G_I) \mid \forall y \in \mathcal{I}_\Z(G_I): \Theta_\Z(x) \preceq_{lex} \Theta_\Z(y)\right\}.
+        \end{displaymath}
+    \end{block}
+
+    \begin{itemize}
+        \item When does it exist?
+    \end{itemize}
+
+    \begin{block}{Theorem $25$ - $26$}
+        For an integer cooperative game $G_I \in \mathcal{G}_I^n$, it holds
+
+        \begin{displaymath}
+            \mathcal{I}_{\Z}(G_I) \neq \emptyset \implies \eta_\Z(G_I) \neq \emptyset,
+        \end{displaymath}
+
+        additionally it holds that
+
+        \begin{displaymath}
+            \eta_\Z(G_I) \neq \emptyset \iff \eta(G_I) \neq \emptyset.
+        \end{displaymath}
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Integer nucleolus - properties}
+    \begin{block}{Theorem $27$}
+        For an integer cooperative game $G_I \in \mathcal{G}_I^n$ the nucleolus is not necessarily a single point solution concept.
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	 SECTION 4
+%----------------------------------------------------------------------------------------
+
+\section{Library}
+
+%------------------------------------------------
+
+\begin{frame}{Python library}
+
+    \begin{itemize}
+        \item \textbf{shapleypy} - Python library for standard cooperative game theory
+        \item Available via PyPI or source code on GitHub
+        \item Currently offers:
+        \begin{itemize}
+            \item Solution concepts - Shapley value
+            \item Classes - recognition of standard classes of games, generation of some classes
+            \item I/O - possibility to load and save games
+        \end{itemize}
+        \item Future plans:
+        \begin{itemize}
+            \item More solution concepts - nucleolus, kernel, etc.
+            \item More generators - might not be complete uniformly random
+            \item Better documentation
+            \item Include integer results
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+%------------------------------------------------
+
 \section{Thank you for your attention}
 
 \end{document}
