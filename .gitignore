@@ -306,6 +306,5 @@ TSWLatexianTemp*
 #*Notes.bib
 
 # Custom
-src/*.pdf
 .vscode/
 .DS_Store
