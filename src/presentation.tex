@@ -521,85 +521,21 @@
 
 \begin{frame}{Integer classes}
     \pause
-
     \begin{itemize}
-        \item Let $c \in \mathbb{N}_0$.
-    \end{itemize}
-
-    \pause
-    
-    \begin{block}{$C$-tight games}
-        A cooperative game $(N,v)$ is \textbf{c-tight} if it holds that
-        \begin{displaymath}
-            \forall S \subseteq N: 0 \leq v(S) \leq c \land v(N) = c.
-        \end{displaymath}
-    \end{block}
-
-    \pause
-
-    \begin{itemize}
-        \item For given $c$ there is $(c+1)^{2^n - 2}$ $c$-tight games.
-    \end{itemize}
-
-    \pause
-   
-    \begin{block}{$C$-bounded games}
-        A cooperative game $(N,v)$ is \textbf{c-bounded} if it holds that
-        \begin{displaymath}
-            \forall S \subseteq N: 0 \leq v(S) \leq c.
-        \end{displaymath}
-    \end{block}
-
-    \pause
-
-    \begin{itemize}
-        \item For given $c$ there is $(c+1)^{2^n - 1}$ $c$-bounded games.
-    \end{itemize}
-
-\end{frame}
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}{Counting games}
-    \pause
-
-    \begin{block}{Theorems $12$ and $14$}
-        Let $c, n, k \in \mathbb{N}$ and $k \leq n$.
-        The number of games with the following properties is given by
-
+        \item Classes - games whose characteristic function satisfies certain properties
+        \pause
+        \item Introduced new integer based classes, for given $c$:
         \begin{itemize}
-            \item $c$-tight integer $k$-games $\rightarrow$ $\binom{\binom{n}{k}-1+c}{c},$
-            \item $c$-bounded integer $k$-games $\rightarrow$ $\sum_{i=0}^{c}\binom{\binom{n}{k}-1+i}{i}.$
+            \item $c$-tight - $\forall S \subseteq N: 0 \leq v(S) \leq c \land v(N) = c$
+            \item $c$-bounded - $\forall S \subseteq N: 0 \leq v(S) \leq c$
         \end{itemize}
-    \end{block}
-
-    \pause
-
-    \begin{block}{Theorems $13$ and $15$}
-        Let $c, n \in \mathbb{N}$.
-        The number of games with the following properties is given by
-
+        \pause
+        \item Experiments:
         \begin{itemize}
-            \item $c$-tight integer positive games $\rightarrow$ $\binom{2^{n}-2+c}{c},$
-            \item $c$-bounded integer positive games $\rightarrow$ $\sum_{i=0}^{c}\binom{2^{n}-2+i}{i}.$
+            \item Counted games from standard classes (e.g. convex games) that are also $c$-bounded/tight
+            \item Derived exact formulae for positive and $k$-games
         \end{itemize}
-    \end{block}
-\end{frame}
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}{Experiments}
-    \pause
-
-    \begin{figure}
-        \includegraphics[width=0.8\textwidth]{../img/figure_log_percentage_positive_games.png}
-        \centering
-        \caption{Percentage of positive games for different $n$ and $c$}
-    \end{figure}
+    \end{itemize}
 \end{frame}
 
 %------------------------------------------------
