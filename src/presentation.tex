@@ -127,6 +127,53 @@
 
 %------------------------------------------------
 
+\begin{frame}{Cooperative game theory - solution concepts}
+    \begin{block}{Imputation set}
+        For cooperative game $(N,v)$, we define the following sets:
+        \begin{itemize}
+            \item \textbf{Preimputation}: $\I^*(v) = \left\{x \in \Rn \mid x(N) = v(N) \right\}$
+            \item \textbf{Imputation}: $\I(v) = \left\{x \in \I^*(v) \mid \forall i \in N: x_i \geq v(i)\right\}$
+        \end{itemize} 
+    \end{block}
+
+    \textit{Possible fair solution...}
+
+    \begin{block}{The Shapley value}
+        For a cooperative game $(N,v)$, the \textbf{Shapley value} $\phi(v)$ of player $i$ is
+        \begin{displaymath}
+            \phi_i(v) = \sum_{S \subseteq N \setminus i}\frac{s!(n-s-1)!}{n!}\left(v(S \cup i) - v(S)\right)    
+        \end{displaymath}
+        
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}{Cooperative game theory - solution concepts}
+    \begin{block}{Excess}
+            Let $(N,v)$ be an essential game, i.e., $v(N) \geq \sum_{i \in N}v(i)$, $x \in \mathcal{I}(v)$ and $\emptyset \neq S \subseteq N$.
+            The \emph{excess $e(S,x,v)$ of coalition $S$ in game $(N,v)$ with respect to payoff vector $x$} is defined as $e(S,x,v) = v(S) - x(S)$.
+    \end{block}
+
+    \begin{itemize}
+        \item We further need to define the \emph{vector of excesses} for every $x \in \mathbb{R}^n$ as $\Theta(x)=\left(e(S_1,x,v), \dots, e(S_{2^{n}-2},x,v)\right)$, where the excesses are ordered in decreasing order.
+    \end{itemize}
+
+    \begin{block}{Nucleolus}
+        For a cooperative game $(N,v)$, the \emph{nucleolus} $\eta(v)$ is defined as
+        \begin{displaymath}
+            \eta(v) = \left\{ x \in \mathcal{I}(v) \mid \forall y \in \mathcal{I}(v): \Theta(x) \preceq_{lex} \Theta(y)\right\},
+        \end{displaymath}
+        where $\preceq_{lex}$ is the lexicographical ordering of vectors.
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+
 \begin{frame}{Cooperative game theory - integer setting}
     \textit{The goal of integer cooperative game theory is to study and find integer solution concepts...}
 
@@ -147,19 +194,16 @@
 %------------------------------------------------
 
 \begin{frame}{Cooperative game theory - integer setting}
-    \begin{block}{Imputation sets}
-        For integer cooperative game $G_I \in \mathcal{G}_I^n$, the following sets are defined:
-        \begin{itemize}
-            \item \emph{Integer imputation set}: $\mathcal{I}_{\Z}(G_I) = \mathcal{I}(G_I) \cap \Z^{n}$,
-            \item \emph{Integer dual imputation set}: $\mathcal{I}_{\Z}^{\star}(G_I) = \mathcal{I}^{\star}(G_I) \cap \Z^{n}$.
-        \end{itemize}
+    \begin{block}{Imputation set}
+        For integer cooperative game $G_I \in \mathcal{G}_I^n$, the \emph{Integer imputation set} set is defined as $\mathcal{I}_{\Z}(G_I) = \mathcal{I}(G_I) \cap \Z^{n}$.
     \end{block}
 
     \begin{block}{Solution concepts}
         For integer cooperative game $G_I \in \mathcal{G}_I^n$, the following solution concepts are defined:
         \begin{itemize}
             \item \emph{Integer core}: $\mathcal{C}_{\Z}(G_I) = \mathcal{C}(G_I) \cap \Z^{n}$,
-            \item \emph{Integer D-Core}: $DC_{\Z}(G_I) = \mathcal{I}_{\Z}(G_I) \setminus dom(\mathcal{I}_{\Z}(G_I))$.
+            \item \emph{Integer D-Core}: $DC_{\Z}(G_I) = \mathcal{I}_{\Z}(G_I) \setminus dom(\mathcal{I}_{\Z}(G_I))$,
+            \item \dots
         \end{itemize}
     \end{block}
 
@@ -227,7 +271,7 @@
 
         \begin{itemize}
             \item $c$-tight integer positive games $\rightarrow$ $\binom{2^{n}-2+c}{c},$
-            \item $c$-bounded integer $k$-games $\rightarrow$ $\sum_{i=0}^{c}\binom{2^{n}-2+i}{i}.$
+            \item $c$-bounded integer positive games $\rightarrow$ $\sum_{i=0}^{c}\binom{2^{n}-2+i}{i}.$
         \end{itemize}
     \end{block}
 \end{frame}
@@ -237,7 +281,11 @@
 %------------------------------------------------
 
 \begin{frame}{Experiments}
-    GRAPH
+    \begin{figure}
+        \includegraphics[width=0.8\textwidth]{../img/figure_log_percentage_positive_games.png}
+        \centering
+        \caption{Percentage of positive games for different $n$ and $c$}
+    \end{figure}
 \end{frame}
 
 %------------------------------------------------
@@ -374,7 +422,7 @@
     \end{block}
 
     \begin{itemize}
-        \item How about the properties?
+        \item What about the properties?
     \end{itemize}
 
     \begin{block}{Theorem $20$}
